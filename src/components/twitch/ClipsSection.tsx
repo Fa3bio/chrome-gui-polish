@@ -23,9 +23,11 @@ export const ClipsSection = ({ clips, loading, error, onDeleteClip }: ClipsSecti
     if (loading) {
       return (
         <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-5 text-center min-h-[300px]">
-          <AlertCircle className="w-12 h-12 mb-4 stroke-muted-foreground" />
-          <h3 className="text-lg font-semibold text-foreground m-0">Caricamento...</h3>
-          <p className="text-sm mt-1">Caricamento dati API...</p>
+          <div className="animate-pulse">
+            <AlertCircle className="w-16 h-16 mb-4 stroke-primary" />
+          </div>
+          <h3 className="text-xl font-bold text-foreground m-0 tracking-tight">Caricamento...</h3>
+          <p className="text-sm mt-2 font-medium">Caricamento dati API...</p>
         </div>
       );
     }
@@ -33,9 +35,9 @@ export const ClipsSection = ({ clips, loading, error, onDeleteClip }: ClipsSecti
     if (error) {
       return (
         <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-5 text-center min-h-[300px]">
-          <AlertCircle className="w-12 h-12 mb-4 stroke-destructive" />
-          <h3 className="text-lg font-semibold text-foreground m-0">Errore</h3>
-          <p className="text-sm mt-1">{error}</p>
+          <AlertCircle className="w-16 h-16 mb-4 stroke-destructive" />
+          <h3 className="text-xl font-bold text-foreground m-0 tracking-tight">Errore</h3>
+          <p className="text-sm mt-2 font-medium">{error}</p>
         </div>
       );
     }
@@ -43,46 +45,49 @@ export const ClipsSection = ({ clips, loading, error, onDeleteClip }: ClipsSecti
     if (clips.length === 0) {
       return (
         <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-5 text-center min-h-[300px]">
-          <AlertCircle className="w-12 h-12 mb-4 stroke-muted-foreground" />
-          <h3 className="text-lg font-semibold text-foreground m-0">Nessuna Clip</h3>
-          <p className="text-sm mt-1">Non ci sono clip recenti da mostrare</p>
+          <AlertCircle className="w-16 h-16 mb-4 stroke-muted-foreground/50" />
+          <h3 className="text-xl font-bold text-foreground m-0 tracking-tight">Nessuna Clip</h3>
+          <p className="text-sm mt-2 font-medium">Non ci sono clip recenti da mostrare</p>
         </div>
       );
     }
 
     return (
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 p-4">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 p-5">
         {clips.map((clip) => (
           <div
             key={clip.id}
-            className="bg-card rounded-lg border border-border overflow-hidden transition-all hover:border-primary hover:-translate-y-0.5 flex flex-col"
+            className="bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 overflow-hidden transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 flex flex-col group"
           >
             {/* Thumbnail */}
-            <div className="relative w-full aspect-video bg-card-secondary">
+            <div className="relative w-full aspect-video bg-card-secondary overflow-hidden">
               <img
                 src={clip.thumbnail}
                 alt={clip.title}
-                className="w-full h-full object-cover block"
+                className="w-full h-full object-cover block transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute bottom-0 left-0 right-0 flex justify-between px-2 py-1.5 bg-gradient-to-t from-black/70 to-transparent text-xs font-medium text-white">
-                <span>{clip.views} views</span>
-                <span>{clip.createdAt}</span>
+              <div className="absolute bottom-0 left-0 right-0 flex justify-between px-3 py-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent text-xs font-semibold text-white backdrop-blur-xs">
+                <span className="flex items-center gap-1">
+                  <span className="opacity-80">👁️</span>
+                  {clip.views}
+                </span>
+                <span className="opacity-90">{clip.createdAt}</span>
               </div>
             </div>
 
             {/* Info */}
-            <div className="p-2.5 flex justify-between items-start gap-2">
+            <div className="p-3 flex justify-between items-start gap-2">
               <div className="flex-grow min-w-0">
-                <p className="text-sm font-medium m-0 whitespace-nowrap overflow-hidden text-ellipsis">
+                <p className="text-sm font-semibold m-0 whitespace-nowrap overflow-hidden text-ellipsis tracking-tight">
                   {clip.title}
                 </p>
-                <span className="text-xs text-muted-foreground">{clip.creator}</span>
+                <span className="text-xs text-muted-foreground/70 font-medium">{clip.creator}</span>
               </div>
               <Button
                 size="sm"
                 variant="destructive"
                 onClick={() => onDeleteClip(clip.id)}
-                className="flex-shrink-0 text-xs px-2.5 py-1 h-auto"
+                className="flex-shrink-0 text-xs px-3 py-1.5 h-auto rounded-lg hover:scale-105 transition-transform"
               >
                 Delete
               </Button>
