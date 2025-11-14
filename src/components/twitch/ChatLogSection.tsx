@@ -69,7 +69,7 @@ export const ChatLogSection = ({ entries, onBanUser }: ChatLogSectionProps) => {
                     </span>
                   )}
                 </span>
-                {entry.userId && entry.type === 'leave' && (
+                {entry.userId && entry.flagged && (
                   <Button
                     size="sm"
                     variant="destructive"
