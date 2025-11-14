@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Clip Manager",
+  "version": "2.0",
+  "description": "Visualizza le clip della live corrente per una rapida moderazione.",
+  "permissions": [
+    "activeTab",
+    "identity",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.twitch.tv/*"
+  ],
+  "action": {
+    "default_icon": "icon.png"
+  },
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
