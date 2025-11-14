@@ -19,8 +19,8 @@ interface ChatLogSectionProps {
 
 export const ChatLogSection = ({ entries, onBanUser }: ChatLogSectionProps) => {
   return (
-    <aside className="flex-shrink-0 w-[350px] bg-card-secondary flex flex-col overflow-hidden">
-      <ScrollArea className="flex-grow p-4">
+    <aside className="flex-shrink-0 w-[350px] bg-card-secondary/80 backdrop-blur-md flex flex-col overflow-hidden border-l border-border/50 shadow-xl">
+      <ScrollArea className="flex-grow p-5">
         <ul className="list-none p-0 m-0 text-sm text-muted-foreground space-y-0">
           {entries.map((entry) => {
             if (entry.type === 'header') {
@@ -46,25 +46,25 @@ export const ChatLogSection = ({ entries, onBanUser }: ChatLogSectionProps) => {
             return (
               <li
                 key={entry.id}
-                className={`py-2.5 border-b border-border flex justify-between items-center gap-2 ${
-                  entry.flagged ? 'bg-destructive/10' : ''
+                className={`py-3 border-b border-border/30 flex justify-between items-center gap-2 rounded-lg px-2 transition-all hover:bg-card/30 ${
+                  entry.flagged ? 'bg-destructive/10 border-destructive/30' : ''
                 }`}
               >
                 <span className="flex-grow overflow-hidden text-ellipsis whitespace-nowrap">
-                  <span className={`font-bold text-base ${colorClass}`}>{arrow}</span>{' '}
+                  <span className={`font-extrabold text-base ${colorClass}`}>{arrow}</span>{' '}
                   {entry.warning && (
-                    <span className="text-destructive font-bold mr-1 text-sm">[{entry.warning}]</span>
+                    <span className="text-destructive font-bold mr-1.5 text-sm px-1.5 py-0.5 bg-destructive/20 rounded">[{entry.warning}]</span>
                   )}
                   <a
                     href={`https://www.twitch.tv/popout/moderator/${entry.username}/viewercard`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:underline font-medium"
+                    className="text-primary hover:underline font-semibold transition-colors hover:text-primary/80"
                   >
                     {entry.username}
                   </a>
                   {entry.timestamp && (
-                    <span className="text-xs text-muted-foreground ml-1.5">
+                    <span className="text-xs text-muted-foreground/60 ml-2 font-medium">
                       {entry.timestamp}
                     </span>
                   )}
@@ -74,7 +74,7 @@ export const ChatLogSection = ({ entries, onBanUser }: ChatLogSectionProps) => {
                     size="sm"
                     variant="destructive"
                     onClick={() => onBanUser(entry.userId!, entry.username!)}
-                    className="flex-shrink-0 text-xs px-2 py-1 h-auto"
+                    className="flex-shrink-0 text-xs px-2.5 py-1 h-auto rounded-lg hover:scale-105 transition-transform font-semibold"
                   >
                     Ban
                   </Button>
