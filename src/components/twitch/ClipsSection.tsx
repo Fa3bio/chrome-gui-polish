@@ -100,7 +100,7 @@ export const ClipsSection = ({ clips, loading, error, onDeleteClip }: ClipsSecti
 
   return (
     <section className="flex-grow bg-background overflow-auto flex flex-col p-5">
-      <div className="bg-card/30 backdrop-blur-sm rounded-xl border border-border/30 shadow-sm p-5 h-full overflow-auto">
+      <div className="bg-card/70 backdrop-blur-sm rounded-xl border border-border/60 shadow-lg p-5 h-full overflow-auto">
         {renderContent()}
       </div>
     </section>
