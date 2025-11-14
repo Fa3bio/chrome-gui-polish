@@ -1,39 +1,42 @@
+import { TwitchDashboard } from "@/components/twitch/TwitchDashboard";
+
 const Index = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <div className="w-full max-w-[95vw]">
         <div className="mb-6 text-center">
           <h1 className="mb-2 text-3xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
-            Preview Estensione Chrome
+            Dashboard Moderazione Twitch
           </h1>
           <p className="text-sm text-muted-foreground">
-            Barre header rimosse - Layout pulito senza "🎬 Sezione Clip" e "💬 Log Entrata/Uscita"
+            Convertita in React - Modificabile con Visual Edit
           </p>
         </div>
         
         <div className="rounded-xl border border-border bg-card/30 p-3 shadow-2xl backdrop-blur">
-          <iframe 
-            src="/popup.html" 
-            className="w-full h-[80vh] rounded-lg border border-border/50 bg-background"
-            title="Chrome Extension Preview"
-            style={{ minHeight: '600px' }}
-          />
+          <div className="w-full h-[80vh] min-h-[600px] rounded-lg border border-border/50 bg-background overflow-hidden">
+            <TwitchDashboard />
+          </div>
         </div>
 
         <div className="mt-6 rounded-lg border border-primary/20 bg-primary/5 p-4">
-          <h3 className="mb-2 font-bold text-sm">✨ Modifiche Applicate</h3>
+          <h3 className="mb-2 font-bold text-sm">✨ Conversione React Completata</h3>
           <ul className="space-y-1 text-xs text-muted-foreground">
             <li className="flex items-start gap-2">
               <span className="text-primary">✓</span>
-              <span>Rimosse le barre header "🎬 Sezione Clip" e "💬 Log Entrata/Uscita"</span>
+              <span>Interfaccia convertita in componenti React modulari</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary">✓</span>
-              <span>Aumentato padding delle sezioni per maggiore respiro visivo</span>
+              <span>Design system Tailwind integrato con colori Twitch</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary">✓</span>
-              <span>Layout più pulito e minimalista mantenendo tutte le funzionalità</span>
+              <span>Modificabile con Visual Edit - tutti gli elementi sono selezionabili</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">✓</span>
+              <span>Struttura pronta per integrazione con popup.js</span>
             </li>
           </ul>
         </div>

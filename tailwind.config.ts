@@ -45,7 +45,13 @@ export default {
         },
         card: {
           DEFAULT: "hsl(var(--card))",
+          secondary: "hsl(var(--card-secondary))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        twitch: {
+          live: "hsl(var(--twitch-live))",
+          enter: "hsl(var(--twitch-enter))",
+          exit: "hsl(var(--twitch-exit))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
