@@ -53,7 +53,7 @@ export const ClipsSection = ({ clips, loading, error, onDeleteClip }: ClipsSecti
     }
 
     return (
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 p-5">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5">
         {clips.map((clip) => (
           <div
             key={clip.id}
@@ -68,7 +68,7 @@ export const ClipsSection = ({ clips, loading, error, onDeleteClip }: ClipsSecti
               />
               <div className="absolute bottom-0 left-0 right-0 flex justify-between px-3 py-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent text-xs font-semibold text-white backdrop-blur-xs">
                 <span className="flex items-center gap-1">
-                  <span className="opacity-80">👁️</span>
+                  <span className="opacity-90">Views:</span>
                   {clip.views}
                 </span>
                 <span className="opacity-90">{clip.createdAt}</span>
@@ -99,8 +99,10 @@ export const ClipsSection = ({ clips, loading, error, onDeleteClip }: ClipsSecti
   };
 
   return (
-    <section className="flex-grow bg-card overflow-auto flex flex-col">
-      {renderContent()}
+    <section className="flex-grow bg-background overflow-auto flex flex-col p-5">
+      <div className="bg-card/70 backdrop-blur-sm rounded-xl border border-border/60 shadow-lg p-5 h-full overflow-auto">
+        {renderContent()}
+      </div>
     </section>
   );
 };
